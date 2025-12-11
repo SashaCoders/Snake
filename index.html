@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , user-scalable="no">
+    <title>Snake</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/p5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="conrul">
+        <!-- відкрити настройки -->
+        <div class="config">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-gear"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                <path
+                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+            </svg>
+        </div>
+        <div class="rules">
+            <!-- закрити настройки -->
+            <div class="clows">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-lg"
+                    viewBox="0 0 16 16" style="color: white;">
+                    <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                </svg>
+            </div>
+            <!-- <div class="rul Music">
+                <div class="name">Music</div>
+                <div class="one">
+                    <audio controls loop>
+                        <source src="menu.mp3">
+                    </audio>
+                </div>
+            </div> -->
+
+            <div class="rul edge">
+                <div class="name">Control</div>
+                <div class="one">
+                    <div class="ikon Keyboard">Keyboard</div>
+                    <div class="ikon Sensor">Sensor</div>
+                </div>
+            </div>
+
+            <!-- розмір поля -->
+            <div class="rul fieldSize">
+                <div class="name"> Field Size</div>
+                <div class="one">
+                    <div class="ikon easy_fieldSize">Easy</div>
+                    <div class="ikon normal_fieldSize">Normal</div>
+                    <div class="ikon hard_fieldSize">Hard</div>
+                </div>
+            </div>
+
+            <!-- швидкість -->
+            <div class="rul speed">
+                <div class="name">Snake Speed</div>
+                <div class="one">
+                    <div class="ikon easy_speed">Easy</div>
+                    <div class="ikon normal_speed">Normal</div>
+                    <div class="ikon hard_speed">Hard</div>
+                </div>
+            </div>
+
+            <!-- дія з краями -->
+            <div class="rul edge">
+                <div class="name">
+                    End Of Field</div>
+                <div class="one">
+                    <div class="ikon teleport_edge">Teleport</div>
+                    <div class="ikon end_edge">Crash Into Wall</div>
+                </div>
+            </div>
+
+            <!-- колір голви, хвоста, їжі -->
+            <div class="rul color">
+                <div class="color1">
+                    <div class="name">Color Head</div>
+                    <div class="one">
+                        <input type="color" class="colorHead"
+                            style="width:100px; height: 30px;  background: rgb(188, 172, 172); border-radius: 5px;">
+                    </div>
+                </div>
+                <div class="color2">
+                    <div class="name">Color Tail</div>
+                    <div class="one">
+                        <input type="color" class="colorTail"
+                            style="width: 100px; height: 30px;  background: rgb(188, 172, 172); border-radius: 5px;">
+                    </div>
+                </div>
+                <div class="color2">
+                    <div class="name">Color Food</div>
+                    <div class="one">
+                        <input type="color" class="colorFood"
+                            style="width: 100px; height: 30px;  background: rgb(188, 172, 172); border-radius: 5px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- рахунок -->
+    <div class="wrapper">
+        <p id="food"> </p>
+        <p id="best_food"> </p>
+        <p id="speedFood"> </p>
+    </div>
+
+    <!-- старт -->
+    <main>
+        <div class="start">Start</div>
+    </main>
+
+    <div class="btns">
+        <div>
+            <div class="btn clickW">W</div>
+        </div>
+        <div id="ones">
+            <div class="btn clickA">A</div>
+            <div class="btn clickD">D</div>
+        </div>
+        <div>
+            <div class="btn clickS">S</div>
+        </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
